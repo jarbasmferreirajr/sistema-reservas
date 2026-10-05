@@ -1,0 +1,13 @@
+# binarios
+out/
+target/
+*.class
+
+# arquivos de execucao das replicas
+logs/*.pid
+
+# IDEs (as tarefas do VS Code ficam no repositorio)
+.idea/
+.vscode/*
+!.vscode/tasks.json
+!.vscode/settings.json

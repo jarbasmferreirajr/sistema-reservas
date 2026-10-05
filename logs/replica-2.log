@@ -1,0 +1,83 @@
+18:12:42.594 R2 [main] === Replica 2 | TCP 127.0.0.1:5002 | UDP 127.0.0.1:6002 | assentos=50 | sincronizacao=ON | janela=3 ms ===
+18:12:42.606 R2 [main] procurando outras replicas ativas (STATUS via UDP)...
+18:12:42.649 R2 [main] detector: replica 1 (127.0.0.1:5001) esta ATIVA (papel INICIALIZANDO)
+18:12:43.265 R2 [main] JOIN ok: estado copiado da replica 1 (127.0.0.1:5001) (0 assentos ocupados). Papel: BACKUP
+18:12:43.271 R2 [main] Replica 2 PRONTA como BACKUP (primaria = replica 1)
+18:12:43.526 R2 [atendente-1] cliente carla conectado de /127.0.0.1:49365 -> clientes conectados: 1
+18:13:21.850 R2 [atendente-2] REPL aplicada: RESERVAR assento=5 user=bruno contador=1
+18:14:17.297 R2 [atendente-2] REPL aplicada: RESERVAR assento=12 user=carla contador=2
+18:14:17.298 R2 [atendente-1] RESERVAR|12|carla encaminhado a primaria (replica 1) -> OK|RESERVADO|12
+18:17:46.863 R2 [atendente-3] ########## MODO: sincronizacao DESLIGADA (regiao critica SEM protecao) ##########
+18:17:46.873 R2 [atendente-2] ==================== RESET sem-sync (todos os assentos livres) ====================
+18:17:46.897 R2 [atendente-2] REPL aplicada: RESERVAR assento=1 user=cli1 contador=1
+18:17:46.899 R2 [atendente-2] REPL aplicada: RESERVAR assento=11 user=cli2 contador=2
+18:17:46.904 R2 [atendente-2] REPL aplicada: RESERVAR assento=21 user=cli3 contador=3
+18:17:46.926 R2 [atendente-2] REPL aplicada: RESERVAR assento=22 user=cli3 contador=4
+18:17:46.929 R2 [atendente-2] REPL aplicada: RESERVAR assento=2 user=cli1 contador=5
+18:17:46.932 R2 [atendente-2] REPL aplicada: RESERVAR assento=12 user=cli2 contador=6
+18:17:46.936 R2 [atendente-2] REPL aplicada: RESERVAR assento=3 user=cli1 contador=7
+18:17:46.957 R2 [atendente-2] REPL aplicada: RESERVAR assento=13 user=cli2 contador=8
+18:17:46.958 R2 [atendente-2] REPL aplicada: RESERVAR assento=23 user=cli3 contador=9
+18:17:46.963 R2 [atendente-2] REPL aplicada: RESERVAR assento=4 user=cli1 contador=10
+18:17:46.972 R2 [atendente-2] REPL aplicada: RESERVAR assento=5 user=cli1 contador=11
+18:17:46.984 R2 [atendente-2] REPL aplicada: RESERVAR assento=6 user=cli1 contador=12
+18:17:46.988 R2 [atendente-2] REPL aplicada: RESERVAR assento=24 user=cli3 contador=13
+18:17:46.992 R2 [atendente-2] REPL aplicada: RESERVAR assento=14 user=cli2 contador=14
+18:17:47.002 R2 [atendente-2] REPL aplicada: RESERVAR assento=25 user=cli3 contador=15
+18:17:47.014 R2 [atendente-2] REPL aplicada: RESERVAR assento=7 user=cli1 contador=16
+18:17:47.025 R2 [atendente-2] REPL aplicada: RESERVAR assento=15 user=cli2 contador=17
+18:17:47.029 R2 [atendente-2] REPL aplicada: RESERVAR assento=8 user=cli1 contador=18
+18:17:47.030 R2 [atendente-2] REPL aplicada: RESERVAR assento=26 user=cli3 contador=19
+18:17:47.051 R2 [atendente-2] REPL aplicada: RESERVAR assento=27 user=cli3 contador=20
+18:17:47.063 R2 [atendente-2] REPL aplicada: RESERVAR assento=9 user=cli1 contador=21
+18:17:47.064 R2 [atendente-2] REPL aplicada: RESERVAR assento=16 user=cli2 contador=22
+18:17:47.065 R2 [atendente-2] REPL aplicada: RESERVAR assento=28 user=cli3 contador=23
+18:17:47.086 R2 [atendente-2] REPL aplicada: RESERVAR assento=29 user=cli3 contador=24
+18:17:47.091 R2 [atendente-2] REPL aplicada: RESERVAR assento=10 user=cli1 contador=25
+18:17:47.095 R2 [atendente-2] REPL aplicada: RESERVAR assento=17 user=cli2 contador=26
+18:17:47.115 R2 [atendente-2] REPL aplicada: RESERVAR assento=30 user=cli3 contador=27
+18:17:47.132 R2 [atendente-2] REPL aplicada: RESERVAR assento=18 user=cli2 contador=28
+18:17:47.158 R2 [atendente-2] REPL aplicada: RESERVAR assento=19 user=cli2 contador=29
+18:17:47.174 R2 [atendente-2] REPL aplicada: RESERVAR assento=20 user=cli2 contador=30
+18:19:25.427 R2 [atendente-5] ########## MODO: sincronizacao LIGADA (regiao critica protegida por synchronized) ##########
+18:19:25.436 R2 [atendente-2] ==================== RESET com-sync (todos os assentos livres) ====================
+18:19:25.459 R2 [atendente-2] REPL aplicada: RESERVAR assento=1 user=cli1 contador=1
+18:19:25.464 R2 [atendente-2] REPL aplicada: RESERVAR assento=21 user=cli3 contador=2
+18:19:25.470 R2 [atendente-2] REPL aplicada: RESERVAR assento=11 user=cli2 contador=3
+18:19:25.478 R2 [atendente-2] REPL aplicada: RESERVAR assento=2 user=cli1 contador=4
+18:19:25.483 R2 [atendente-2] REPL aplicada: RESERVAR assento=12 user=cli2 contador=5
+18:19:25.489 R2 [atendente-2] REPL aplicada: RESERVAR assento=22 user=cli3 contador=6
+18:19:25.502 R2 [atendente-2] REPL aplicada: RESERVAR assento=3 user=cli1 contador=7
+18:19:25.517 R2 [atendente-2] REPL aplicada: RESERVAR assento=13 user=cli2 contador=8
+18:19:25.522 R2 [atendente-2] REPL aplicada: RESERVAR assento=23 user=cli3 contador=9
+18:19:25.528 R2 [atendente-2] REPL aplicada: RESERVAR assento=4 user=cli1 contador=10
+18:19:25.534 R2 [atendente-2] REPL aplicada: RESERVAR assento=14 user=cli2 contador=11
+18:19:25.540 R2 [atendente-2] REPL aplicada: RESERVAR assento=5 user=cli1 contador=12
+18:19:25.546 R2 [atendente-2] REPL aplicada: RESERVAR assento=24 user=cli3 contador=13
+18:19:25.563 R2 [atendente-2] REPL aplicada: RESERVAR assento=15 user=cli2 contador=14
+18:19:25.569 R2 [atendente-2] REPL aplicada: RESERVAR assento=6 user=cli1 contador=15
+18:19:25.576 R2 [atendente-2] REPL aplicada: RESERVAR assento=25 user=cli3 contador=16
+18:19:25.599 R2 [atendente-2] REPL aplicada: RESERVAR assento=16 user=cli2 contador=17
+18:19:25.604 R2 [atendente-2] REPL aplicada: RESERVAR assento=26 user=cli3 contador=18
+18:19:25.609 R2 [atendente-2] REPL aplicada: RESERVAR assento=7 user=cli1 contador=19
+18:19:25.614 R2 [atendente-2] REPL aplicada: RESERVAR assento=17 user=cli2 contador=20
+18:19:25.624 R2 [atendente-2] REPL aplicada: RESERVAR assento=18 user=cli2 contador=21
+18:19:25.629 R2 [atendente-2] REPL aplicada: RESERVAR assento=27 user=cli3 contador=22
+18:19:25.642 R2 [atendente-2] REPL aplicada: RESERVAR assento=28 user=cli3 contador=23
+18:19:25.648 R2 [atendente-2] REPL aplicada: RESERVAR assento=8 user=cli1 contador=24
+18:19:25.654 R2 [atendente-2] REPL aplicada: RESERVAR assento=19 user=cli2 contador=25
+18:19:25.659 R2 [atendente-2] REPL aplicada: RESERVAR assento=9 user=cli1 contador=26
+18:19:25.673 R2 [atendente-2] REPL aplicada: RESERVAR assento=20 user=cli2 contador=27
+18:19:25.679 R2 [atendente-2] REPL aplicada: RESERVAR assento=29 user=cli3 contador=28
+18:19:25.686 R2 [atendente-2] REPL aplicada: RESERVAR assento=10 user=cli1 contador=29
+18:19:25.699 R2 [atendente-2] REPL aplicada: RESERVAR assento=30 user=cli3 contador=30
+18:19:40.506 R2 [udp-status] UDP STATUS de /127.0.0.1:59043 -> STATUS|ID=2|PAPEL=BACKUP|PRIMARIA=1|CLIENTES=1|REQ=1|LIVRES=20|SYNC=ON|REPLICAS=-|ATIVO
+18:19:58.054 R2 [detector-falhas] detector: replica 1 (127.0.0.1:5001) nao respondeu 3 heartbeats seguidos -> considerada FORA DO AR
+18:19:58.055 R2 [detector-falhas] *** FAILOVER: a primaria (replica 1) esta fora do ar -> esta replica foi PROMOVIDA a PRIMARIA ***
+18:20:10.980 R2 [atendente-7] JOIN da replica 1 (127.0.0.1:5001): estado atual enviado e replica incluida na replicacao
+18:25:38.219 R2 [atendente-8] cliente ana conectado de /127.0.0.1:65044 -> clientes conectados: 2
+18:25:38.226 R2 [atendente-8] RC RESERVAR assento=40 user=ana | le: assento=livre contador=30
+18:25:38.231 R2 [atendente-8] RC RESERVAR assento=40 user=ana | grava: contador 30 -> 31 | OK
+18:25:50.047 R2 [atendente-8] LISTAR (ana) -> 19 livres
+18:26:25.948 R2 [atendente-1] cliente carla fechou a conexao
+18:26:25.950 R2 [atendente-1] clientes conectados agora: 1 (o servidor continua atendendo os demais)

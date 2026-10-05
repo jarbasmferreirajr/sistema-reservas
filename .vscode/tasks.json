@@ -1,0 +1,180 @@
+{
+  "version": "2.0.0",
+  "options": {
+    "cwd": "${workspaceFolder}",
+    "env": {
+      "PATH": "${env:JAVA_HOME}\\bin;${env:PATH}"
+    },
+    "shell": {
+      "executable": "powershell.exe",
+      "args": [
+        "-NoProfile",
+        "-Command"
+      ]
+    }
+  },
+  "tasks": [
+    {
+      "label": "1. TESTE 1 - subir réplicas 1 e 2 e clientes ana, bruno e carla",
+      "detail": "Compila e abre 5 terminais: Réplica 1, Réplica 2, Cliente ana, Cliente bruno, Cliente carla",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "Compilar",
+        "Subir réplicas e clientes"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "2. TESTES 2 e 3 - 30 reservas SEM sincronização",
+      "type": "shell",
+      "command": "java -cp out reservas.TesteCarga --sync off",
+      "detail": "3 clientes x 10 reservas simultâneas, região crítica sem trava",
+      "presentation": {
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "3. TESTE 4 - 30 reservas COM sincronização",
+      "type": "shell",
+      "command": "java -cp out reservas.TesteCarga --sync on",
+      "detail": "O mesmo teste, com synchronized",
+      "presentation": {
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "4. TESTE 5 - STATUS via UDP e comparação TCP x UDP",
+      "type": "shell",
+      "command": "java -cp out reservas.ConsultaStatus",
+      "detail": "STATUS de cada réplica por UDP e tempos UDP x TCP",
+      "presentation": {
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "5. TESTE 6 - derrubar a réplica 1",
+      "type": "shell",
+      "command": "Stop-Process -Id (Get-Content logs\\replica-1.pid) -Force; Write-Host 'replica 1 derrubada'",
+      "detail": "Mata o processo da réplica 1 de forma abrupta (queda)",
+      "presentation": {
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "6. TESTE 6 - religar a réplica 1",
+      "detail": "Sobe a réplica 1 de novo, no mesmo terminal; ela volta como backup",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "Réplica 1"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Compilar",
+      "type": "shell",
+      "command": "if (Test-Path out) { Remove-Item -Recurse -Force out }; javac --release 11 -encoding UTF-8 -d out src\\main\\java\\reservas\\*.java; if ($LASTEXITCODE -ne 0) { exit 1 }; Write-Host 'compilado em out'",
+      "hide": true,
+      "presentation": {
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated",
+        "clear": true
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Subir réplicas e clientes",
+      "hide": true,
+      "dependsOrder": "parallel",
+      "dependsOn": [
+        "Réplica 1",
+        "Réplica 2",
+        "Cliente ana",
+        "Cliente bruno",
+        "Cliente carla"
+      ],
+      "problemMatcher": []
+    },
+    {
+      "label": "Réplica 1",
+      "type": "shell",
+      "command": "java -cp out reservas.Servidor --id 1",
+      "hide": true,
+      "presentation": {
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated",
+        "clear": false
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Réplica 2",
+      "type": "shell",
+      "command": "java -cp out reservas.Servidor --id 2",
+      "hide": true,
+      "presentation": {
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated",
+        "clear": false
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Cliente ana",
+      "type": "shell",
+      "command": "java -cp out reservas.Cliente --usuario ana --inicio 1",
+      "hide": true,
+      "presentation": {
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated",
+        "clear": false
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Cliente bruno",
+      "type": "shell",
+      "command": "java -cp out reservas.Cliente --usuario bruno --inicio 1",
+      "hide": true,
+      "presentation": {
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated",
+        "clear": false
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Cliente carla",
+      "type": "shell",
+      "command": "java -cp out reservas.Cliente --usuario carla --inicio 2",
+      "hide": true,
+      "presentation": {
+        "reveal": "always",
+        "focus": false,
+        "panel": "dedicated",
+        "clear": false
+      },
+      "problemMatcher": []
+    }
+  ]
+}

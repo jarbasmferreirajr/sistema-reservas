@@ -1,0 +1,178 @@
+18:12:42.606 R1 [main] === Replica 1 | TCP 127.0.0.1:5001 | UDP 127.0.0.1:6001 | assentos=50 | sincronizacao=ON | janela=3 ms ===
+18:12:42.621 R1 [main] procurando outras replicas ativas (STATUS via UDP)...
+18:12:42.640 R1 [atendente-1] cliente bruno conectado de /127.0.0.1:57184 -> clientes conectados: 1
+18:12:42.658 R1 [main] detector: replica 2 (127.0.0.1:5002) esta ATIVA (papel INICIALIZANDO)
+18:12:42.659 R1 [atendente-2] cliente ana conectado de /127.0.0.1:57185 -> clientes conectados: 2
+18:12:42.961 R1 [main] replicas subindo ao mesmo tempo: a de menor id (esta) assume como PRIMARIA
+18:12:42.966 R1 [main] Replica 1 PRONTA como PRIMARIA (primaria = replica 1)
+18:12:43.264 R1 [atendente-3] JOIN da replica 2 (127.0.0.1:5002): estado atual enviado e replica incluida na replicacao
+18:13:21.839 R1 [atendente-1] RC RESERVAR assento=5 user=bruno | le: assento=livre contador=0
+18:13:21.844 R1 [atendente-1] RC RESERVAR assento=5 user=bruno | grava: contador 0 -> 1 | OK
+18:14:07.384 R1 [atendente-2] RC RESERVAR assento=5 user=ana | le: assento=bruno contador=1
+18:14:07.392 R1 [atendente-2] RC RESERVAR assento=5 user=ana | ERRO|ASSENTO_OCUPADO|5
+18:14:17.287 R1 [atendente-4] escrita recebida de outra replica: RESERVAR|12|carla
+18:14:17.288 R1 [atendente-4] RC RESERVAR assento=12 user=carla | le: assento=livre contador=1
+18:14:17.295 R1 [atendente-4] RC RESERVAR assento=12 user=carla | grava: contador 1 -> 2 | OK
+18:17:46.859 R1 [atendente-6] ########## MODO: sincronizacao DESLIGADA (regiao critica SEM protecao) ##########
+18:17:46.869 R1 [atendente-7] cliente admin conectado de /127.0.0.1:51104 -> clientes conectados: 3
+18:17:46.873 R1 [atendente-7] ==================== RESET sem-sync (todos os assentos livres) ====================
+18:17:46.875 R1 [atendente-7] cliente admin fechou a conexao
+18:17:46.876 R1 [atendente-7] clientes conectados agora: 2 (o servidor continua atendendo os demais)
+18:17:46.884 R1 [atendente-8] cliente cli3 conectado de /127.0.0.1:51107 -> clientes conectados: 3
+18:17:46.884 R1 [atendente-10] cliente cli2 conectado de /127.0.0.1:51105 -> clientes conectados: 5
+18:17:46.884 R1 [atendente-9] cliente cli1 conectado de /127.0.0.1:51106 -> clientes conectados: 4
+18:17:46.891 R1 [atendente-8] RC RESERVAR assento=21 user=cli3 | le: assento=livre contador=0
+18:17:46.891 R1 [atendente-10] RC RESERVAR assento=11 user=cli2 | le: assento=livre contador=0
+18:17:46.891 R1 [atendente-9] RC RESERVAR assento=1 user=cli1 | le: assento=livre contador=0
+18:17:46.896 R1 [atendente-9] RC RESERVAR assento=1 user=cli1 | grava: contador 0 -> 1 | OK
+18:17:46.896 R1 [atendente-10] RC RESERVAR assento=11 user=cli2 | grava: contador 0 -> 1 | OK
+18:17:46.902 R1 [atendente-8] !! CORRIDA: contador mudou de 0 para 1 durante a janela; esta thread vai gravar 1 por cima (atualizacao perdida)
+18:17:46.903 R1 [atendente-8] RC RESERVAR assento=21 user=cli3 | grava: contador 0 -> 1 | OK
+18:17:46.922 R1 [atendente-8] RC RESERVAR assento=22 user=cli3 | le: assento=livre contador=1
+18:17:46.923 R1 [atendente-9] RC RESERVAR assento=2 user=cli1 | le: assento=livre contador=1
+18:17:46.926 R1 [atendente-8] RC RESERVAR assento=22 user=cli3 | grava: contador 1 -> 2 | OK
+18:17:46.927 R1 [atendente-10] RC RESERVAR assento=12 user=cli2 | le: assento=livre contador=2
+18:17:46.928 R1 [atendente-9] !! CORRIDA: contador mudou de 1 para 2 durante a janela; esta thread vai gravar 2 por cima (atualizacao perdida)
+18:17:46.928 R1 [atendente-9] RC RESERVAR assento=2 user=cli1 | grava: contador 1 -> 2 | OK
+18:17:46.931 R1 [atendente-9] RC RESERVAR assento=3 user=cli1 | le: assento=livre contador=2
+18:17:46.932 R1 [atendente-10] RC RESERVAR assento=12 user=cli2 | grava: contador 2 -> 3 | OK
+18:17:46.936 R1 [atendente-9] !! CORRIDA: contador mudou de 2 para 3 durante a janela; esta thread vai gravar 3 por cima (atualizacao perdida)
+18:17:46.936 R1 [atendente-9] RC RESERVAR assento=3 user=cli1 | grava: contador 2 -> 3 | OK
+18:17:46.950 R1 [atendente-10] RC RESERVAR assento=13 user=cli2 | le: assento=livre contador=3
+18:17:46.952 R1 [atendente-8] RC RESERVAR assento=23 user=cli3 | le: assento=livre contador=3
+18:17:46.956 R1 [atendente-10] RC RESERVAR assento=13 user=cli2 | grava: contador 3 -> 4 | OK
+18:17:46.957 R1 [atendente-8] !! CORRIDA: contador mudou de 3 para 4 durante a janela; esta thread vai gravar 4 por cima (atualizacao perdida)
+18:17:46.957 R1 [atendente-8] RC RESERVAR assento=23 user=cli3 | grava: contador 3 -> 4 | OK
+18:17:46.958 R1 [atendente-9] RC RESERVAR assento=4 user=cli1 | le: assento=livre contador=4
+18:17:46.963 R1 [atendente-9] RC RESERVAR assento=4 user=cli1 | grava: contador 4 -> 5 | OK
+18:17:46.968 R1 [atendente-9] RC RESERVAR assento=5 user=cli1 | le: assento=livre contador=5
+18:17:46.972 R1 [atendente-9] RC RESERVAR assento=5 user=cli1 | grava: contador 5 -> 6 | OK
+18:17:46.979 R1 [atendente-9] RC RESERVAR assento=6 user=cli1 | le: assento=livre contador=6
+18:17:46.982 R1 [atendente-8] RC RESERVAR assento=24 user=cli3 | le: assento=livre contador=6
+18:17:46.984 R1 [atendente-9] RC RESERVAR assento=6 user=cli1 | grava: contador 6 -> 7 | OK
+18:17:46.987 R1 [atendente-8] !! CORRIDA: contador mudou de 6 para 7 durante a janela; esta thread vai gravar 7 por cima (atualizacao perdida)
+18:17:46.987 R1 [atendente-10] RC RESERVAR assento=14 user=cli2 | le: assento=livre contador=7
+18:17:46.987 R1 [atendente-8] RC RESERVAR assento=24 user=cli3 | grava: contador 6 -> 7 | OK
+18:17:46.992 R1 [atendente-10] RC RESERVAR assento=14 user=cli2 | grava: contador 7 -> 8 | OK
+18:17:46.998 R1 [atendente-8] RC RESERVAR assento=25 user=cli3 | le: assento=livre contador=8
+18:17:47.002 R1 [atendente-8] RC RESERVAR assento=25 user=cli3 | grava: contador 8 -> 9 | OK
+18:17:47.010 R1 [atendente-9] RC RESERVAR assento=7 user=cli1 | le: assento=livre contador=9
+18:17:47.014 R1 [atendente-9] RC RESERVAR assento=7 user=cli1 | grava: contador 9 -> 10 | OK
+18:17:47.020 R1 [atendente-10] RC RESERVAR assento=15 user=cli2 | le: assento=livre contador=10
+18:17:47.023 R1 [atendente-9] RC RESERVAR assento=8 user=cli1 | le: assento=livre contador=10
+18:17:47.025 R1 [atendente-10] RC RESERVAR assento=15 user=cli2 | grava: contador 10 -> 11 | OK
+18:17:47.025 R1 [atendente-8] RC RESERVAR assento=26 user=cli3 | le: assento=livre contador=11
+18:17:47.028 R1 [atendente-9] !! CORRIDA: contador mudou de 10 para 11 durante a janela; esta thread vai gravar 11 por cima (atualizacao perdida)
+18:17:47.028 R1 [atendente-9] RC RESERVAR assento=8 user=cli1 | grava: contador 10 -> 11 | OK
+18:17:47.030 R1 [atendente-8] RC RESERVAR assento=26 user=cli3 | grava: contador 11 -> 12 | OK
+18:17:47.044 R1 [atendente-8] RC RESERVAR assento=27 user=cli3 | le: assento=livre contador=12
+18:17:47.049 R1 [atendente-8] RC RESERVAR assento=27 user=cli3 | grava: contador 12 -> 13 | OK
+18:17:47.056 R1 [atendente-9] RC RESERVAR assento=9 user=cli1 | le: assento=livre contador=13
+18:17:47.056 R1 [atendente-10] RC RESERVAR assento=16 user=cli2 | le: assento=livre contador=13
+18:17:47.059 R1 [atendente-8] RC RESERVAR assento=28 user=cli3 | le: assento=livre contador=13
+18:17:47.062 R1 [atendente-9] RC RESERVAR assento=9 user=cli1 | grava: contador 13 -> 14 | OK
+18:17:47.062 R1 [atendente-10] RC RESERVAR assento=16 user=cli2 | grava: contador 13 -> 14 | OK
+18:17:47.064 R1 [atendente-8] !! CORRIDA: contador mudou de 13 para 14 durante a janela; esta thread vai gravar 14 por cima (atualizacao perdida)
+18:17:47.064 R1 [atendente-8] RC RESERVAR assento=28 user=cli3 | grava: contador 13 -> 14 | OK
+18:17:47.080 R1 [atendente-8] RC RESERVAR assento=29 user=cli3 | le: assento=livre contador=14
+18:17:47.085 R1 [atendente-8] RC RESERVAR assento=29 user=cli3 | grava: contador 14 -> 15 | OK
+18:17:47.085 R1 [atendente-9] RC RESERVAR assento=10 user=cli1 | le: assento=livre contador=15
+18:17:47.089 R1 [atendente-10] RC RESERVAR assento=17 user=cli2 | le: assento=livre contador=15
+18:17:47.090 R1 [atendente-9] RC RESERVAR assento=10 user=cli1 | grava: contador 15 -> 16 | OK
+18:17:47.093 R1 [atendente-10] !! CORRIDA: contador mudou de 15 para 16 durante a janela; esta thread vai gravar 16 por cima (atualizacao perdida)
+18:17:47.094 R1 [atendente-10] RC RESERVAR assento=17 user=cli2 | grava: contador 15 -> 16 | OK
+18:17:47.109 R1 [atendente-8] RC RESERVAR assento=30 user=cli3 | le: assento=livre contador=16
+18:17:47.113 R1 [atendente-9] cliente cli1 fechou a conexao
+18:17:47.113 R1 [atendente-9] clientes conectados agora: 4 (o servidor continua atendendo os demais)
+18:17:47.115 R1 [atendente-8] RC RESERVAR assento=30 user=cli3 | grava: contador 16 -> 17 | OK
+18:17:47.126 R1 [atendente-10] RC RESERVAR assento=18 user=cli2 | le: assento=livre contador=17
+18:17:47.131 R1 [atendente-10] RC RESERVAR assento=18 user=cli2 | grava: contador 17 -> 18 | OK
+18:17:47.144 R1 [atendente-8] cliente cli3 fechou a conexao
+18:17:47.145 R1 [atendente-8] clientes conectados agora: 3 (o servidor continua atendendo os demais)
+18:17:47.152 R1 [atendente-10] RC RESERVAR assento=19 user=cli2 | le: assento=livre contador=18
+18:17:47.157 R1 [atendente-10] RC RESERVAR assento=19 user=cli2 | grava: contador 18 -> 19 | OK
+18:17:47.168 R1 [atendente-10] RC RESERVAR assento=20 user=cli2 | le: assento=livre contador=19
+18:17:47.173 R1 [atendente-10] RC RESERVAR assento=20 user=cli2 | grava: contador 19 -> 20 | OK
+18:17:47.199 R1 [atendente-10] cliente cli2 fechou a conexao
+18:17:47.200 R1 [atendente-10] clientes conectados agora: 2 (o servidor continua atendendo os demais)
+18:19:25.424 R1 [atendente-13] ########## MODO: sincronizacao LIGADA (regiao critica protegida por synchronized) ##########
+18:19:25.432 R1 [atendente-14] cliente admin conectado de /127.0.0.1:64411 -> clientes conectados: 3
+18:19:25.435 R1 [atendente-14] ==================== RESET com-sync (todos os assentos livres) ====================
+18:19:25.438 R1 [atendente-14] cliente admin fechou a conexao
+18:19:25.438 R1 [atendente-14] clientes conectados agora: 2 (o servidor continua atendendo os demais)
+18:19:25.445 R1 [atendente-15] cliente cli3 conectado de /127.0.0.1:64412 -> clientes conectados: 3
+18:19:25.446 R1 [atendente-16] cliente cli1 conectado de /127.0.0.1:64414 -> clientes conectados: 4
+18:19:25.446 R1 [atendente-17] cliente cli2 conectado de /127.0.0.1:64413 -> clientes conectados: 5
+18:19:25.452 R1 [atendente-16] RC RESERVAR assento=1 user=cli1 | le: assento=livre contador=0
+18:19:25.458 R1 [atendente-16] RC RESERVAR assento=1 user=cli1 | grava: contador 0 -> 1 | OK
+18:19:25.459 R1 [atendente-15] RC RESERVAR assento=21 user=cli3 | le: assento=livre contador=1
+18:19:25.463 R1 [atendente-15] RC RESERVAR assento=21 user=cli3 | grava: contador 1 -> 2 | OK
+18:19:25.465 R1 [atendente-17] RC RESERVAR assento=11 user=cli2 | le: assento=livre contador=2
+18:19:25.470 R1 [atendente-17] RC RESERVAR assento=11 user=cli2 | grava: contador 2 -> 3 | OK
+18:19:25.473 R1 [atendente-16] RC RESERVAR assento=2 user=cli1 | le: assento=livre contador=3
+18:19:25.478 R1 [atendente-16] RC RESERVAR assento=2 user=cli1 | grava: contador 3 -> 4 | OK
+18:19:25.479 R1 [atendente-17] RC RESERVAR assento=12 user=cli2 | le: assento=livre contador=4
+18:19:25.483 R1 [atendente-17] RC RESERVAR assento=12 user=cli2 | grava: contador 4 -> 5 | OK
+18:19:25.484 R1 [atendente-15] RC RESERVAR assento=22 user=cli3 | le: assento=livre contador=5
+18:19:25.489 R1 [atendente-15] RC RESERVAR assento=22 user=cli3 | grava: contador 5 -> 6 | OK
+18:19:25.497 R1 [atendente-16] RC RESERVAR assento=3 user=cli1 | le: assento=livre contador=6
+18:19:25.501 R1 [atendente-16] RC RESERVAR assento=3 user=cli1 | grava: contador 6 -> 7 | OK
+18:19:25.512 R1 [atendente-17] RC RESERVAR assento=13 user=cli2 | le: assento=livre contador=7
+18:19:25.516 R1 [atendente-17] RC RESERVAR assento=13 user=cli2 | grava: contador 7 -> 8 | OK
+18:19:25.517 R1 [atendente-15] RC RESERVAR assento=23 user=cli3 | le: assento=livre contador=8
+18:19:25.521 R1 [atendente-15] RC RESERVAR assento=23 user=cli3 | grava: contador 8 -> 9 | OK
+18:19:25.523 R1 [atendente-16] RC RESERVAR assento=4 user=cli1 | le: assento=livre contador=9
+18:19:25.528 R1 [atendente-16] RC RESERVAR assento=4 user=cli1 | grava: contador 9 -> 10 | OK
+18:19:25.529 R1 [atendente-17] RC RESERVAR assento=14 user=cli2 | le: assento=livre contador=10
+18:19:25.533 R1 [atendente-17] RC RESERVAR assento=14 user=cli2 | grava: contador 10 -> 11 | OK
+18:19:25.535 R1 [atendente-16] RC RESERVAR assento=5 user=cli1 | le: assento=livre contador=11
+18:19:25.540 R1 [atendente-16] RC RESERVAR assento=5 user=cli1 | grava: contador 11 -> 12 | OK
+18:19:25.541 R1 [atendente-15] RC RESERVAR assento=24 user=cli3 | le: assento=livre contador=12
+18:19:25.546 R1 [atendente-15] RC RESERVAR assento=24 user=cli3 | grava: contador 12 -> 13 | OK
+18:19:25.557 R1 [atendente-17] RC RESERVAR assento=15 user=cli2 | le: assento=livre contador=13
+18:19:25.562 R1 [atendente-17] RC RESERVAR assento=15 user=cli2 | grava: contador 13 -> 14 | OK
+18:19:25.564 R1 [atendente-16] RC RESERVAR assento=6 user=cli1 | le: assento=livre contador=14
+18:19:25.569 R1 [atendente-16] RC RESERVAR assento=6 user=cli1 | grava: contador 14 -> 15 | OK
+18:19:25.570 R1 [atendente-15] RC RESERVAR assento=25 user=cli3 | le: assento=livre contador=15
+18:19:25.575 R1 [atendente-15] RC RESERVAR assento=25 user=cli3 | grava: contador 15 -> 16 | OK
+18:19:25.595 R1 [atendente-17] RC RESERVAR assento=16 user=cli2 | le: assento=livre contador=16
+18:19:25.599 R1 [atendente-17] RC RESERVAR assento=16 user=cli2 | grava: contador 16 -> 17 | OK
+18:19:25.600 R1 [atendente-15] RC RESERVAR assento=26 user=cli3 | le: assento=livre contador=17
+18:19:25.604 R1 [atendente-15] RC RESERVAR assento=26 user=cli3 | grava: contador 17 -> 18 | OK
+18:19:25.605 R1 [atendente-16] RC RESERVAR assento=7 user=cli1 | le: assento=livre contador=18
+18:19:25.609 R1 [atendente-16] RC RESERVAR assento=7 user=cli1 | grava: contador 18 -> 19 | OK
+18:19:25.610 R1 [atendente-17] RC RESERVAR assento=17 user=cli2 | le: assento=livre contador=19
+18:19:25.614 R1 [atendente-17] RC RESERVAR assento=17 user=cli2 | grava: contador 19 -> 20 | OK
+18:19:25.619 R1 [atendente-17] RC RESERVAR assento=18 user=cli2 | le: assento=livre contador=20
+18:19:25.623 R1 [atendente-17] RC RESERVAR assento=18 user=cli2 | grava: contador 20 -> 21 | OK
+18:19:25.625 R1 [atendente-15] RC RESERVAR assento=27 user=cli3 | le: assento=livre contador=21
+18:19:25.629 R1 [atendente-15] RC RESERVAR assento=27 user=cli3 | grava: contador 21 -> 22 | OK
+18:19:25.636 R1 [atendente-15] RC RESERVAR assento=28 user=cli3 | le: assento=livre contador=22
+18:19:25.641 R1 [atendente-15] RC RESERVAR assento=28 user=cli3 | grava: contador 22 -> 23 | OK
+18:19:25.643 R1 [atendente-16] RC RESERVAR assento=8 user=cli1 | le: assento=livre contador=23
+18:19:25.648 R1 [atendente-16] RC RESERVAR assento=8 user=cli1 | grava: contador 23 -> 24 | OK
+18:19:25.650 R1 [atendente-17] RC RESERVAR assento=19 user=cli2 | le: assento=livre contador=24
+18:19:25.654 R1 [atendente-17] RC RESERVAR assento=19 user=cli2 | grava: contador 24 -> 25 | OK
+18:19:25.655 R1 [atendente-16] RC RESERVAR assento=9 user=cli1 | le: assento=livre contador=25
+18:19:25.659 R1 [atendente-16] RC RESERVAR assento=9 user=cli1 | grava: contador 25 -> 26 | OK
+18:19:25.668 R1 [atendente-17] RC RESERVAR assento=20 user=cli2 | le: assento=livre contador=26
+18:19:25.673 R1 [atendente-17] RC RESERVAR assento=20 user=cli2 | grava: contador 26 -> 27 | OK
+18:19:25.674 R1 [atendente-15] RC RESERVAR assento=29 user=cli3 | le: assento=livre contador=27
+18:19:25.678 R1 [atendente-15] RC RESERVAR assento=29 user=cli3 | grava: contador 27 -> 28 | OK
+18:19:25.680 R1 [atendente-16] RC RESERVAR assento=10 user=cli1 | le: assento=livre contador=28
+18:19:25.686 R1 [atendente-16] RC RESERVAR assento=10 user=cli1 | grava: contador 28 -> 29 | OK
+18:19:25.688 R1 [atendente-17] cliente cli2 fechou a conexao
+18:19:25.689 R1 [atendente-17] clientes conectados agora: 4 (o servidor continua atendendo os demais)
+18:19:25.692 R1 [atendente-16] cliente cli1 fechou a conexao
+18:19:25.693 R1 [atendente-16] clientes conectados agora: 3 (o servidor continua atendendo os demais)
+18:19:25.694 R1 [atendente-15] RC RESERVAR assento=30 user=cli3 | le: assento=livre contador=29
+18:19:25.699 R1 [atendente-15] RC RESERVAR assento=30 user=cli3 | grava: contador 29 -> 30 | OK
+18:19:25.713 R1 [atendente-15] cliente cli3 fechou a conexao
+18:19:25.714 R1 [atendente-15] clientes conectados agora: 2 (o servidor continua atendendo os demais)
+18:19:40.481 R1 [udp-status] UDP STATUS de /127.0.0.1:59042 -> STATUS|ID=1|PAPEL=PRIMARIA|PRIMARIA=1|CLIENTES=2|REQ=62|LIVRES=20|SYNC=ON|REPLICAS=2|ATIVO
+18:20:10.949 R1 [main] === Replica 1 | TCP 127.0.0.1:5001 | UDP 127.0.0.1:6001 | assentos=50 | sincronizacao=ON | janela=3 ms ===
+18:20:10.956 R1 [main] procurando outras replicas ativas (STATUS via UDP)...
+18:20:10.971 R1 [main] detector: replica 2 (127.0.0.1:5002) esta ATIVA (papel PRIMARIA)
+18:20:10.981 R1 [main] JOIN ok: estado copiado da replica 2 (127.0.0.1:5002) (30 assentos ocupados). Papel: BACKUP
+18:20:10.988 R1 [main] Replica 1 PRONTA como BACKUP (primaria = replica 2)
+18:25:38.239 R1 [atendente-1] REPL aplicada: RESERVAR assento=40 user=ana contador=31
